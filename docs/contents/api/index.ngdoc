@@ -1,0 +1,15 @@
+@ngdoc overview
+@name API Reference
+@description
+
+# ng.cork.identity API Reference
+
+> Welcome to the **ng.cork.identity** API reference.
+
+If you want to know how **ng.cork.identity** works, checkout the {@link guide/ guide}.
+
+
+## Modules
+
+- **[ng.cork.identity](#/api/ng.cork.identity)** - Provides a service that establishes and tracks user identity.
+

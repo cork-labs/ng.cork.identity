@@ -1,0 +1,73 @@
+@ngdoc overview
+@name ng.cork.identity
+@description
+
+> Provides a service that establishes and tracks user identity.
+
+# Dependencies
+
+- None.
+
+
+# Usage
+
+Add this module as a dependency of your modules.
+
+<pre>
+angular.module('app', ['ng.cork.identity']);
+</pre>
+
+
+
+## [corkIdentity](#/api/ng.cork.corkIdentity.corkIdentity) Service.
+
+> Provide a method to acquire the user identity asynchronously.
+
+Provide a promise based function, which should resolve with the identified user, via {@link ng.cork.identity.corkIdentity#methods_setAcquireMethod setAcquireMethod()}.
+
+<pre>
+angular.module('someModule', ['ng.cork.identity'])
+.run([
+    'corkIdentity',
+    function (corkIdentity) {
+        corkIdentity.setAcquireMethod(function () {
+            return $http.get('/user');
+        });
+        corkIdentity.acquire();
+    }
+]);
+</pre>
+
+> Do something when the identity as been established.
+
+Use the {@link ng.cork.identity.corkIdentity#properties_ready ready} promise and the {@link ng.cork.identity.corkIdentity#properties_current current}
+property to act when the identity is first established.
+
+<pre>
+angular.module('someModule', ['ng.cork.identity'])
+.controller('someController', [
+    'corkIdentity',
+    function (corkIdentity) {
+        corkIdentity.ready.then(function () {
+            $scope.user = corkIdentity.current;
+        });
+    }
+]);
+</pre>
+
+> Do something when the identity changes.
+
+Use the events broadcasted by the {@link ng.cork.identity.corkIdentity corkIdentity} service to act whenever the identity
+is set or cleared.
+
+<pre>
+angular.module('someModule', ['ng.cork.identity'])
+.controller('someController', [
+    '$rootScope',
+    function ($rootScope, corkIdentity) {
+        $rootScope.$on('corkIdentity.onChange', function ($event, corkIdentity) {
+            $scope.user = corkIdentity.current;
+        });
+    }
+]);
+</pre>
