@@ -1,5 +1,5 @@
 /**
- * ng.cork.identity - v0.0.2 - 2015-04-22
+ * ng.cork.identity - v0.0.3 - 2015-05-11
  * https://github.com/cork-labs/ng.cork.identity
  *
  * Copyright (c) 2015 Cork Labs <http://cork-labs.org>
