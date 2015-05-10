@@ -1,9 +1,7 @@
 (function (angular) {
     'use strict';
 
-    var module = angular.module('ng.cork.identity', [
-        'ngRoute'
-    ]);
+    var module = angular.module('ng.cork.identity', []);
 
     var isString = angular.isString;
     var isObject = angular.isObject;
